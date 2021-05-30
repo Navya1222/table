@@ -16,9 +16,7 @@ export class ModalComponent implements OnInit {
    }
   ngOnInit(): void {
   }
-  // dismiss(){
-  //   this.activeModal.dismiss();
-  // }
+
   decline(){
     this.activeModal.close(false)
   }
