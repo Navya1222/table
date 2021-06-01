@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { modalinfo, modalmessage, modaltitle } from '../modal/enummodal';
 import { ModalService } from '../modal/modal.service';
 import { ApiserviceService } from '../services/apiservice.service';
+import { DatasharingService } from '../services/datasharing.service';
 
 @Component({
   selector: 'app-table',
@@ -12,7 +14,7 @@ import { ApiserviceService } from '../services/apiservice.service';
 export class TableComponent implements OnInit {
   postdata: any = [];
   subscribe!: Subscription;
-  constructor(public api: ApiserviceService, private modalservice: ModalService) {
+  constructor(public api: ApiserviceService,private router:Router, private modalservice: ModalService,private service:DatasharingService) {
   }
   ngOnInit(): void {
     this.subscribe = this.api.get().subscribe(res => {
@@ -33,6 +35,10 @@ export class TableComponent implements OnInit {
         }
       }).
       catch(() => console.log('error'))
+  }
+  onEdit(item: any){
+    this.service.Editdata=item;
+    this.router.navigate(['tableedit'])
   }
   ngOnDestroy() {
     this.subscribe.unsubscribe()

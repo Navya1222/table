@@ -5,18 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ModalComponent } from './modal/modal.component';
 import { ModalService } from './modal/modal.service';
+import { DatasharingService } from './services/datasharing.service';
+import { TableeditComponent } from './tableedit/tableedit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ModalComponent  
+    ModalComponent,
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [ModalService],
+  providers: [ModalService,DatasharingService],
   entryComponents:[ModalComponent],
   bootstrap: [AppComponent]
 })

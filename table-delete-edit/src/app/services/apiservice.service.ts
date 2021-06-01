@@ -21,11 +21,13 @@ export class ApiserviceService {
     var headers = new HttpHeaders();
     headers = headers.append('Accept', 'application/json');
     headers = headers.append('Content-Type', 'application/json');
+    console.log('post',body)
     return this.http.post(url, body, {headers: headers});
   }
-  put(body:any): Observable<any> {
-    let url = environment.url;
+  put(body:any,Id:any): Observable<any> {
+    let url = environment.url+'/'+Id;
     var headers = new HttpHeaders();
+    console.log('put',body,Id)
     headers = headers.append('Accept', 'application/json');
     headers = headers.append('Content-Type', 'application/json');
     return this.http.put(url, body, {headers: headers});
